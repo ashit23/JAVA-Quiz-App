@@ -13,27 +13,3 @@ A simple quiz game built with some specific requirements. Why is it called PvZQu
 * The usual material support library from Google
 * The actual quiz questions are included in the project in the form a `.json` file under `/res/raw/quiz.json`
 
-# How to run on your Android phone?
-1. First, Clone this repo
-
-2. In Terminal, go into the main folder
-`cd /path/to/folder/PvZQuiz/`
-
-3. Then build the a debug application and wait till completion
-`./gradlew assembleDebug`
-
-4. Ensure that you have the platform tools, especially the `adb` tool by downloading just the command line version from [Google's site](https://developer.android.com/studio/index.html) or direct link to mac version [here](https://dl.google.com/android/android-sdk_r24.4.1-macosx.zip).
-
-5. Go to the platform tools folder
-`cd /path/to/android-sdk-macosx/platform-tools/`
-
-6. Ensure your Android phone is in debug mode. For example, see [here](https://www.kingoapp.com/root-tutorials/how-to-enable-usb-debugging-mode-on-android.htm).
-
-6. Deploy debug build to your Android phone by 
-`./adb -d install /path/to/PvZQuiz/app/build/outputs/apk/app-debug.apk`
-
-Done
-
-# Screenshots
-|[![Intro](screenshot_intro.png)](https://bundeeteddee.github.io/PvzQuiz/)|[![Quiz](screenshot_quiz.png)](https://bundeeteddee.github.io/PvzQuiz/)|[![Correct Answer](screenshot_correct_choice.png)](https://bundeeteddee.github.io/PvzQuiz/)|[![Incorrect Answer](screenshot_incorrect_choice.png)](https://bundeeteddee.github.io/PvzQuiz/)|[![Results](screenshot_result.png)](https://bundeeteddee.github.io/PvzQuiz/)|
-|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
