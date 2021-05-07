@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="choice"
+            type="com.tinytinybites.android.quiz.model.Choice"/>
+        <variable
+            name="quizViewModel"
+            type="com.tinytinybites.android.quiz.viewmodel.QuizViewModel"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/quiz_choice_container_margin_default"
+        android:layout_marginRight="@dimen/quiz_choice_container_margin_default"
+        app:cardBackgroundColor="@{quizViewModel.getBackgroundColor(choice)}"
+        app:cardPreventCornerOverlap="false"
+        app:cardElevation="2dp">
+
+        <TextView
+            style="@style/Quiz.Choice.Content"
+            android:id="@+id/choice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@{choice}"
+            android:text="@{choice.content}"
+            android:onClick="@{quizViewModel.onChoiceClicked}"
+            android:enabled="@{quizViewModel.choicesDisabled ? false : true}"
+            tools:text="China"/>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

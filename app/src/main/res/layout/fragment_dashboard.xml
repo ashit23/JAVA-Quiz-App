@@ -1,0 +1,153 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="dashboardViewModel"
+            type="com.tinytinybites.android.quiz.viewmodel.DashboardViewModel"/>
+        <variable
+            name="sessionViewModel"
+            type="com.tinytinybites.android.quiz.viewmodel.SessionViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- spacer -->
+        <View
+            android:id="@+id/topPanel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/quiz_toolbar_extra_view"
+            android:background="?attr/colorPrimary"
+            android:layout_alignParentTop="true"
+            />
+
+        <!-- Ensure question and answer is scrollable, for longer content-->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <!-- Single container for scrollview -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- Start New Game Button -->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/startButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dashboard_start_button_margin_side"
+                    android:layout_marginRight="@dimen/dashboard_start_button_margin_side"
+                    android:layout_marginTop="@dimen/dashboard_start_button_margin_top"
+                    android:onClick="@{dashboardViewModel.onStartGameClicked}"
+                    app:cardElevation="5dp"
+                    app:cardCornerRadius="3dp"
+                    app:cardUseCompatPadding="true"
+                    app:cardPreventCornerOverlap="false"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dashboard_start_button_padding"
+                        android:background="@color/accent">
+
+                        <ImageView
+                            android:id="@+id/arrow"
+
+                            android:layout_width="@dimen/dashboard_start_button_arrow_size"
+                            android:layout_height="@dimen/dashboard_start_button_arrow_size"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="100dp"
+                            android:layout_marginRight="7dp"
+                            android:src="@drawable/ico_arrow_right" />
+
+                        <TextView
+                            style="@style/Dashboard.Button.Text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/arrow"
+                            android:inputType="textCapCharacters"
+                            android:text="@string/dashboard_start_new_game"/>
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <!-- Instructions Container -->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/instructions_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dashboard_instructions_margin_side"
+                    android:layout_marginRight="@dimen/dashboard_instructions_margin_side"
+                    android:layout_marginTop="@dimen/dashboard_instructions_margin_top"
+                    android:layout_below="@+id/startButton"
+                    app:cardElevation="5dp"
+                    app:cardCornerRadius="3dp"
+                    app:cardUseCompatPadding="true"
+                    app:cardPreventCornerOverlap="false"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dashboard_instructions_padding"
+                        android:orientation="vertical"
+                        android:background="@android:color/white">
+
+                        <!-- Header -->
+                        <TextView
+                            style="@style/Dashboard.Instructions.Header"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dashboard_instructions_what"/>
+                        <TextView
+                            style="@style/Dashboard.Instructions.Body"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="This is a JAVA programming language quiz"/>
+
+                        <!-- Header -->
+                        <TextView
+                            style="@style/Dashboard.Instructions.Header"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dashboard_instructions_how"/>
+                        <TextView
+                            style="@style/Dashboard.Instructions.Body"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dashboard_instructions_how_content"/>
+
+                        <!-- Header -->
+                        <TextView
+                            style="@style/Dashboard.Instructions.Header"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dashboard_instructions_so_then"/>
+                        <TextView
+                            style="@style/Dashboard.Instructions.Body"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dashboard_instructions_so_then_content"/>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+
+</layout>

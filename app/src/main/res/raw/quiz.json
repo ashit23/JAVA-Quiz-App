@@ -1,0 +1,49 @@
+{
+  "category" : "General Knowledge",
+  "quizes" : [{
+    "question" : "Which of the following is a legal identifier in java ?",
+    "choices" : [{"2variable" : false}, {"#myvar": false}, {"+@$var": false}, {"$_myvar": true }, {"Planet": false}]
+  },
+  {
+    "question" : "Which of these is NOT a valid keyword or reserved word in Java ?",
+    "choices" : [{" default": false}, {"null" : false}, {"String":true }, {"volatile": false}, {"Sportmen": false}]
+  },
+  {
+    "question" : " Which is the legal range of values for a short ?",
+    "choices" : [{"-128 to 127" : false}, {" -256 to 255": false }, {"-32768 to 32767":true}, {"0 to 65535": false}, {"1958": false}]
+  },
+  {
+    "question" : "Which of the following Array declaration statement is illegal ?",
+    "choices" : [{"int [ ] a [ ] = new int [4] [4];" : false}, {"int a[ ][ ] = new int [4] [4];": false}
+    , {"int a[ ] [ ] = new int [ ] [4];": true}, {" int [ ] a [ ] = new int [4] [ ];": false}, {"Galileo": false}]
+  },
+  {
+    "question" : "Which declaration of the main() method is valid ?",
+    "choices" : [{"public void main( String args [] )" : false}, {"public void static main( String args [] )": false},
+      {" final public static void main(String[] arr)": false}, {"public static void main( String[] arr)": true}, {"Maldives": false}]
+  },
+  {
+    "question" : "Which one of the following is invalid declaration of a char ?",
+    "choices" : [{"char c1 = 064770;" : false}, {"char c2 = 'face';": true}, {"char c3 = 0xbeef;": false},
+      {"char c4 = '\\uface';": false}, {"South America": false}]
+  },
+  {
+    "question" : "Which operator will always evaluate all the Operands?",
+    "choices" : [{" ||" : false}, {"&&": false}, {"?": false}, {"%": true}, {"212": false}]
+  },
+  {
+    "question" : "Collection stores only ?",
+    "choices" : [{" object type data" : true}, {"primitive type data": false}, {"string type data": false},
+      {"All of the above": false}, {"35": false}]
+  },
+  {
+    "question" : "Which type of exception is thrown if you try to add an element to an already full Collection ?",
+    "choices" : [{" IllegalArgumentException" : false}, {"IllegalStateException": true}, {"ClassCastException": false},
+      {" NullPointerException": false}, {"White Cedars": false}]
+  },
+  {
+    "question" : "Which interface does NavigableSet implements ?",
+    "choices" : [{"Set" : false}, {"list": false}, {"collection": false}, {" SortedSet": true}, {"2006": false}]
+  }]
+
+}

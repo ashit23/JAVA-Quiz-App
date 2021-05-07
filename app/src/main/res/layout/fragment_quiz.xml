@@ -1,0 +1,181 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="quizViewModel"
+            type="com.tinytinybites.android.quiz.viewmodel.QuizViewModel"/>
+
+        <variable
+            name="sessionViewModel"
+            type="com.tinytinybites.android.quiz.viewmodel.SessionViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- spacer -->
+        <View
+            android:id="@+id/topPanel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/quiz_toolbar_extra_view"
+            android:background="?attr/colorPrimary"
+            android:transitionName="@string/transition_top_panel"
+            android:layout_alignParentTop="true"
+            />
+
+        <!-- Bottom Navigation / Countdown -->
+        <LinearLayout
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:padding="@dimen/quiz_bottom_navigation_padding"
+            android:gravity="center_vertical"
+            android:background="@android:color/white"
+            android:elevation="8dp">
+
+            <TextView
+                style="@style/Quiz.Navigation.Summary"
+                android:id="@+id/quiz_summary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@{sessionViewModel.summary}"
+                tools:text="Question 1/10"/>
+
+            <TextView
+                style="@style/Quiz.Navigation.Summary"
+                android:id="@+id/countdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{quizViewModel.countDownVisibility}"
+                android:text="@{quizViewModel.countDownTime}"/>
+
+            <TextView
+                style="@style/Quiz.Navigation.Next"
+                android:id="@+id/next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{quizViewModel.nextButtonVisibility}"
+                android:elevation="4dp"
+                android:text="@{sessionViewModel.nextButtonText}"
+                android:onClick="@{quizViewModel.onNextQuizClicked}"
+                app:fadeVisible="@{quizViewModel.nextButtonVisible}"/>
+
+        </LinearLayout>
+
+        <!-- Cancel/close -->
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="@dimen/quiz_close_button_size"
+            android:layout_height="@dimen/quiz_close_button_size"
+            android:src="@drawable/ico_close"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/topPanel"
+            android:layout_alignTop="@+id/topPanel"
+            android:layout_alignBottom="@+id/topPanel"
+            android:onClick="@{quizViewModel.onCloseQuizClicked}"
+            android:padding="@dimen/quiz_close_button_padding"
+            android:transitionName="@string/transition_close_button"
+            android:elevation="4dp"/>
+
+
+        <!-- Ensure question and answer is scrollable, for longer content-->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:layout_above="@+id/bottom_navigation">
+
+            <!-- Single container for scrollview -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- Question Container-->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/question_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/quiz_question_card_margin_top"
+                    android:layout_marginBottom="@dimen/quiz_question_card_margin_bottom"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="@dimen/quiz_content_general"
+                    android:layout_marginRight="@dimen/quiz_content_general"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Category -->
+                        <TextView
+                            style="@style/Quiz.Question.Category"
+                            android:id="@+id/quiz_category"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="JAVA"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/quiz_category_margin_bottom"
+                            tools:text="JAVA"/>
+
+                        <!-- Question -->
+                        <TextView
+                            style="@style/Quiz.Question.Content"
+                            android:id="@+id/question_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{quizViewModel.quiz.question.content}"
+                            tools:text="Which country has the largest population in the world?"/>
+
+                    </LinearLayout>
+
+                    <!-- Quiz Result -->
+                    <ImageView
+                        android:layout_width="@dimen/quiz_result_icon_size"
+                        android:layout_height="@dimen/quiz_result_icon_size"
+                        android:layout_alignBottom="@+id/question_cardview"
+                        android:layout_gravity="bottom|right"
+                        android:layout_margin="-10dp"
+                        android:visibility="@{quizViewModel.nextButtonVisibility}"
+                        app:resultIcon="@{quizViewModel.resultIcon}"
+                        tools:src="@drawable/ico_correct"/>
+
+                </android.support.v7.widget.CardView>
+
+                <!-- Choices container -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/question_cardview"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/quiz_choices_container_padding_bottom"
+                    android:clipToPadding="false">
+
+                    <include layout="@layout/choice" android:id="@+id/choice1" app:choice="@{quizViewModel.firstChoice}" app:quizViewModel="@{quizViewModel}"/>
+
+                    <include layout="@layout/choice" android:id="@+id/choice2" app:choice="@{quizViewModel.secondChoice}" app:quizViewModel="@{quizViewModel}"/>
+
+                    <include layout="@layout/choice" android:id="@+id/choice3" app:choice="@{quizViewModel.thirdChoice}" app:quizViewModel="@{quizViewModel}"/>
+
+                    <include layout="@layout/choice" android:id="@+id/choice4" app:choice="@{quizViewModel.fourthChoice}" app:quizViewModel="@{quizViewModel}"/>
+
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+</RelativeLayout>
+
+</layout>
